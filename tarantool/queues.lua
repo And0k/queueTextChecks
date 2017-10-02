@@ -7,7 +7,7 @@ box.cfg {
 --    work_dir = './data/tarantool',
 --    wal_dir = 'xlog_wal',
 --    memtx_dir = 'snapshot_memtx'
-    log='/var/lib/tarantool/tarantool_queue.txt',
+    log='/var/lib/tarantool/tarantool_queue.log',
     pid_file = '/var/lib/tarantool/tarantool_queue.pid'
 }
 
