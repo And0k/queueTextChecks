@@ -1,0 +1,39 @@
+version: "3"
+services:
+  queue:
+    image: tarantool/tarantool:1.8
+    command: tarantool /opt/tarantool/queues.lua
+    volumes:
+      - ./data/tarantool:/var/lib/tarantool
+#      - ./data/tarantool:/usr/local/share/tarantool
+      - ./tarantool:/opt/tarantool
+    ports:
+      - "3301:3301"
+    environment:
+        env_file: ./instance/tarantool.env
+#  python:
+#    # replace username/repo:tag with your name and image details
+#    image: and_ok/queuetext:0.1
+#    build: .
+##    command: python3 textqueue.py runserver 0.0.0.0:8000
+#    ports:
+#      - "3301:3301"
+#      - "5432:5432"
+##    ports:
+##      - "80:80"
+##    networks:
+##      - webnet
+#    depends_on:
+#      - db
+#      - queue
+
+  db:
+#    name
+    image: postgres
+    ports:
+      - "5432:5432"
+    env_file: ./instance/.env
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+#networks:
+#  webnet:
